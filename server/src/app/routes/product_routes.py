@@ -95,10 +95,10 @@ def register_product_routes(
         tags=[produto_tag],
         responses={"200": ProdutoViewSchema, "404": ErrorSchema, "400": ErrorSchema},
     )
-    def update_produto(form: ProdutoUpdateSchema):
+    def update_produto(body: ProdutoUpdateSchema):
         try:
             produto = update_use_case.execute(
-                form.nome_antigo, form.nome, form.quantidade, form.valor
+                body.nome_antigo, body.nome, body.quantidade, body.valor
             )
             return apresenta_produto(produto), 200
         except ProductNotFound as error:

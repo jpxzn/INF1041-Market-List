@@ -143,8 +143,8 @@ const updateItem = async (oldName, newName, newQuantity, newPrice) => {
   const payload = {
     nome_antigo: oldName,
     nome: newName,
-    quantidade: isNaN(Number(newQuantity)) ? null : Number(newQuantity),
-    valor: Number(newPrice),
+    quantidade: isNaN(newQuantity) ? 0 : newQuantity,
+    valor: isNaN(newPrice) ? 0 : newPrice,
   };
 
   let url = 'http://127.0.0.1:5000/produto';
